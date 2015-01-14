@@ -306,9 +306,72 @@ h3{
 
 /* Gallery */
 .gallery {
-	margin-top: 30px;
+    
 }
 
 .gallery img:hover {
 	opacity: 0.4;
+}
+.gallery .C:hover{
+    opacity: 0.4;
+}
+.gallery .C{
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.gallery .c1 {
+    background-color:rgb(0,163,0);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c2 {
+    background-color: rgb(0,171,169);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c3 {
+    background-color: rgb(126,56,120);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c4 {
+    background-color: rgb(227,162,26);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c5 {
+    background-color: rgb(29,29,29);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c6 {
+    background-color: rgb(185,29,71);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c7 {
+    background-color: rgb(255,0,151);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c8 {
+    background-color: rgb(45,137,239);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c9 {
+    background-color: rgb(238,17,17);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .codeC{
+    line-height:136px;
 }

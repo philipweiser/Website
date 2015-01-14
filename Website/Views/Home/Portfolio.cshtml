@@ -11,17 +11,54 @@
 
 <section id="works"></section>
 <div class="container">
-    <div class="row centered mt mb">
-        <h1 id='exampleHeader'>JavaScript Exercises, maxOfThree</h1>
-        <p id="prompt">Please input three numbers:</p>
-        <input type='text' id='text1' size=5 autofocus>
-        <input type='text' id='text2' size=5>
-        <input type='text' id='text3' size=5>
-        <br><br><br>
-        <input type='text' id='answer' size=8 readonly>
-        <input type=button id="clickMe" value="Submit" onclick="callMax()" />
-        <input type=button id="next" value="Next Solution" onclick="nextSln()" />
+    <div class="row">
+        @*<h1 id='exampleHeader'>JavaScript Exercises, maxOfThree</h1>
+            <p id="prompt">Please input three numbers:</p>
+            <input type='text' id='text1' size=5 autofocus>
+            <input type='text' id='text2' size=5>
+            <input type='text' id='text3' size=5>
+            <br><br><br>
+            <input type='text' id='answer' size=8 readonly>
+            <input type=button id="clickMe" value="Submit" onclick="callMax()" />
+            <input type=button id="next" value="Next Solution" onclick="nextSln()" />*@
+        <div class="gallery text-center" style="cursor:pointer">
+            <div class="col-sm-4 c1 C">
+                <h1 class="codeC" onclick="callMax()">Sum</h1>
+            </div>
+            <div class="col-sm-4 c2 C">
+                <h1 class="codeC" onclick="callMultiply()">Multiply</h1>
+            </div>
+            <div class="col-sm-4 c3 C">
+                <h1 class="codeC" onclick="callFactorial()">Factorial</h1>
+            </div>
+        </div>
     </div><! --/row -->
+    <div class="row">
+        <div class="gallery text-center" style="cursor:pointer">
+            <div class="col-sm-4 c4 C">
+                <h1 class="codeC" onclick="callPalindrome()">Palindrome</h1>
+            </div>
+            <div class="col-sm-4 c5 C">
+                <h1 class="codeC" onclick="callFizzBuzz()">FizzBuzz</h1>
+            </div>
+            <div class="col-sm-4 c6 C">
+                <h1 class="codeC" onclick="callIsPerfect()">Perfect</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="gallery text-center" style="cursor:pointer">
+            <div class="col-sm-4 c7 C">
+                <h1 class="codeC" onclick="callDisp()">Find Perfect</h1>
+            </div>
+            <div class="col-sm-4 c8 C">
+                <h1 class="codeC" onclick="callIsHappy()">Happy Numbers</h1>
+            </div>
+            <div class="col-sm-4 c9 C">
+                <h1 class="codeC" onclick="callArmstrong()">Find Armstrong</h1>
+            </div>
+        </div>
+    </div>
 </div><! --/container -->
 <script src="~/assets/js/jquery-impromptu.min.js"></script>
 <link href="~/assets/css/jquery-impromptu.min.css" rel="stylesheet" />
