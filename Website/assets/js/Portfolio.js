@@ -1,54 +1,4 @@
-﻿//var statesdemo = {
-//    state0: {
-//        title: 'Name',
-//        html: '<label>First <input type="text" name="fname" value=""></label><br />' +
-//			'<label>Last <input type="text" name="lname" value=""></label><br />',
-//        buttons: { Next: 1 },
-//        //focus: "input[name='fname']",
-//        submit: function (e, v, m, f) {
-//            console.log(f);
-
-//            e.preventDefault();
-//            $.prompt.goToState('state1');
-//        }
-//    },
-//    state1: {
-//        title: 'Gender',
-//        html: '<label><input type="radio" name="gender" value="Male"> Male</label><br />' +
-//			'<label><input type="radio" name="gender" value="Female"> Female</label>',
-//        buttons: { Back: -1, Next: 1 },
-//        //focus: ":input:first",
-//        submit: function (e, v, m, f) {
-//            console.log(f);
-
-//            if (v == 1) $.prompt.goToState('state2')
-//            if (v == -1) $.prompt.goToState('state0');
-//            e.preventDefault();
-//        }
-//    },
-//    state2: {
-//        title: 'Transportation',
-//        html: '<label>Travels By <select name="travel" multiple>' +
-//				'<option value="Car" selected>Car</option>' +
-//				'<option value="Bus">Bus</option>' +
-//				'<option value="Plane" selected>Plane</option>' +
-//				'<option value="Train">Train</option>' +
-//			'</select></label>',
-//        buttons: { Back: -1, Done: 1 },
-//        focus: 1,
-//        submit: function (e, v, m, f) {
-//            console.log(f);
-
-//            e.preventDefault();
-//            if (v == 1) $.prompt.close();
-//            if (v == -1) $.prompt.goToState('state1');
-//        }
-//    },
-//};
-
-//$.prompt(statesdemo);
-
-//functions that call the modal windows
+﻿//functions that call the modal windows
 function callMax() {
     $.prompt(maxDemo);
 }
@@ -99,18 +49,39 @@ var maxDemo = {
                         '<input type="text" id="number1" size="15">' +
                             ' <p>I expanded this method to accept more than three numbers.  Please input as many numbers as you would like, separated by spaces.</p>' +
                     ' </div>' +
-                    '<div type="col-xs-1">' +
+                    '<div id="unmadeCode">' +
                     '</div>' +
-                '</div>'+
+                '</div>' +
                 '<div type="row" id="answer-1-row">'+
                 '</div>',
-        buttons: { Back: -1, Submit: 0, Next: 1 },
+        buttons: { Back: -1, Submit: 0, Next: 1 , Code: 2},
         //focus: ":input:first",
         submit: function (e, v, m, f) {
             
             if (v == 1) $.prompt.goToState('state2');
             if (v == 0) fillAnswer(maxOfThree($('#number1').val()), $('#answer-1-row'), 'The largest number submitted is: ');
             if (v == -1) $.prompt.goToState('state0');
+            if (v == 2) {
+                if ($('#madeCode').is(':visible')) {
+                    $('#madeCode').hide();
+                } else {
+                    $('#madeCode').show();
+                }
+                $('#unmadeCode').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
+'function maxOfThree() {\n' +
+'    var temp = 0;\n' +
+'    var strArr = arguments[0].split(" ");\n' +
+'    for (var i = 0; i < strArr.length; i++) {\n' +
+'        if (Number(strArr[i]) > temp) {\n' +
+'            temp = strArr[i];\n' +
+'        }\n' +
+'    }\n' +
+'    return temp;\n' +
+'}\n</pre></div>');
+                SyntaxHighlighter.highlight($('#toColor'));
+
+                
+            }
             e.preventDefault();
         }
     },
@@ -137,23 +108,43 @@ var sumDemo = {
     },
     state1: {
         title: 'Sum Method input',
-        html: '<div type="row">' +
+        html: '<div type="row">\n'+
                     '<div type="col-xs-1">' +
                         '<input type="text" id="number1" size="15">' +
                             ' <p>Please input as many numbers as you would like, separated by spaces.</p>' +
                     ' </div>' +
                     '<div type="col-xs-1">' +
                     '</div>' +
+                    '<div id="code">' +
+                    '</div>' +
                 '</div>' +
                 '<div type="row" id="answer-1-row">' +
-                '</div>',
-        buttons: { Back: -1, Submit: 0, Next: 1 },
+                '</div>' ,
+        buttons: { Back: -1, Submit: 0, Next: 1, Code: 2 },
         //focus: ":input:first",
         submit: function (e, v, m, f) {
 
             if (v == 1) $.prompt.goToState('state2')
             if (v == 0) fillAnswer(sum($('#number1').val()), $('#answer-1-row'), 'The sum is: ');
             if (v == -1) $.prompt.goToState('state0');
+            if (v == 2) {
+                if ($('#madeCode').is(':visible')) {
+                    $('#madeCode').hide();
+                } else {
+                    $('#madeCode').show();
+                }
+                $('#code').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
+'function sum() {\n' +
+'    var temp = 0;\n' +
+'    var strArr = arguments[0].split(" ");\n' +
+'    for (i = 0; i < strArr.length; i++) {\n' +
+'        temp += Number(strArr[i]);\n' +
+'    }\n' +
+'    return temp;\n' +
+'}</pre></div>');
+                SyntaxHighlighter.highlight($('#toColor'));
+
+            }
             e.preventDefault();
         }
     },
@@ -185,18 +176,36 @@ var multiplyDemo = {
                         '<input type="text" id="number1" size="15">' +
                             ' <p>I expanded this method to accept more than three numbers.  Please input as many numbers as you would like, separated by spaces.</p>' +
                     ' </div>' +
-                    '<div type="col-xs-1">' +
+                    '<div id="code">' +
                     '</div>' +
                 '</div>' +
                 '<div type="row" id="answer-1-row">' +
                 '</div>',
-        buttons: { Back: -1, Submit: 0, Next: 1 },
+        buttons: { Back: -1, Submit: 0, Next: 1, Code: 2 },
         //focus: ":input:first",
         submit: function (e, v, m, f) {
 
             if (v == 1) $.prompt.goToState('state2')
             if (v == 0) fillAnswer(multiply($('#number1').val()), $('#answer-1-row'), 'The product is: ');
             if (v == -1) $.prompt.goToState('state0');
+            if (v == 2) {
+                if ($('#madeCode').is(':visible')) {
+                    $('#madeCode').hide();
+                } else {
+                    $('#madeCode').show();
+                }
+                $('#code').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">\n'+
+'function multiply() {\n' +
+'    var temp = 1;\n'+
+'    var strArr = arguments[0].split(" ");\n'+
+'    for (i = 0; i < strArr.length; i++) {\n'+
+'        temp *= Number(strArr[i]);\n'+
+'    }\n'+
+'    return temp;\n'+
+'}\n</pre></div>');
+                SyntaxHighlighter.highlight($('#toColor'));
+
+            }
             e.preventDefault();
         }
     },
@@ -228,18 +237,37 @@ var facDemo = {
                         '<input type="text" id="number1" size="15">' +
                             ' <p>Please input a positive integer.</p>' +
                     ' </div>' +
-                    '<div type="col-xs-1">' +
+                    '<div id="code">' +
                     '</div>' +
                 '</div>' +
                 '<div type="row" id="answer-1-row">' +
                 '</div>',
-        buttons: { Back: -1, Submit: 0, Next: 1 },
+        buttons: { Back: -1, Submit: 0, Next: 1, Code: 2 },
         //focus: ":input:first",
         submit: function (e, v, m, f) {
 
             if (v == 1) $.prompt.goToState('state2')
             if (v == 0) fillAnswer(factorial($('#number1').val()), $('#answer-1-row'), 'The factorial of ' + $('#number1').val() + ' is: ');
             if (v == -1) $.prompt.goToState('state0');
+            if (v == 2) {
+                if ($('#madeCode').is(':visible')) {
+                    $('#madeCode').hide();
+                } else {
+                    $('#madeCode').show();
+                }
+                $('#code').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">\n' +
+'function factorial() {\n' +
+'    var temp = 1;\n'+
+'    var strArr = arguments[0].split(" ");\n'+
+'    var n = Number(strArr[0]);\n'+
+'    for (i = n; i > 0; i--) {\n'+
+'        temp *= i;\n'+
+'    }\n'+
+'    return temp;\n'+
+'}\n</pre></div>');
+                SyntaxHighlighter.highlight($('#toColor'));
+
+            }
             e.preventDefault();
         }
     },
@@ -271,26 +299,38 @@ var palDemo = {
                         '<input type="text" id="number1" size="15">' +
                             ' <p>Please input a word or phrase.</p>' +
                     ' </div>' +
-                    '<div type="col-xs-1">' +
+                    '<div id="code">' +
                     '</div>' +
                 '</div>' +
                 '<div type="row" id="answer-1-row">' +
                 '</div>',
-        buttons: { Back: -1, Submit: 0, Next: 1 },
+        buttons: { Back: -1, Submit: 0, close: 1, Code: 2 },
         //focus: ":input:first",
         submit: function (e, v, m, f) {
 
-            if (v == 1) $.prompt.goToState('state2')
+            if (v == 1) $.prompt.close();
             if (v == 0) fillAnswer(palindrome($('#number1').val()), $('#answer-1-row'), 'Is it a palindrome?: ');
             if (v == -1) $.prompt.goToState('state0');
+            if (v == 2) {
+                if ($('#madeCode').is(':visible')) {
+                    $('#madeCode').hide();
+                } else {
+                    $('#madeCode').show();
+                }
+                $('#code').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">\n' +
+'function palindrome() {\n' +
+'    var temp = String(arguments[0]).toLowerCase();\n'+
+'    for (i = 0; i < temp.length / 2 - 1; i++) {\n'+
+'        if (temp.charAt(i) !== temp.charAt(temp.length - 1 - i)) {\n'+
+'            return false;\n'+
+'        }\n'+
+'    }\n'+
+'    return true;\n'+
+'}\n</pre></div>');
+                SyntaxHighlighter.highlight($('#toColor'));
+
+            }
             e.preventDefault();
-        }
-    },
-    state2: {
-        title: 'Palindrome Method Result',
-        html: '',
-        buttons: { Back: -1, Next: 1 },
-        submit: function (e, v, m, f) {
         }
     }
 };
@@ -308,24 +348,46 @@ var fbDemo = {
         }
     },
     state1: {
-        title: 'Max Method input',
-        html:   '<div type="row" id="answer-1-row">' +
+        title: 'Run FizzBuzz',
+        html: '<div type="row" id="answer-1-row">' +
+                    '<div id="code">'+
+                    '</div>'+
                 '</div>',
-        buttons: { Back: -1, Submit: 0, Next: 1 },
+        buttons: { Back: -1, Submit: 0, close: 1, Code: 2 },
         //focus: ":input:first",
         submit: function (e, v, m, f) {
 
-            if (v == 1) $.prompt.goToState('state2')
+            if (v == 1) $.prompt.close();
             if (v == 0) fillAnswer(fizzBuzz(), $('#answer-1-row'), 'The results of running FizzBuzz: <br>');
             if (v == -1) $.prompt.goToState('state0');
+            if (v == 2) {
+                if ($('#madeCode').is(':visible')) {
+                    $('#madeCode').hide();
+                } else {
+                    $('#madeCode').show();
+                }
+                    $('#code').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">'+
+                    'function fizzBuzz() {\n' +
+                    '    var answer = "";'+
+                    '    for (i = 1; i <= 100; i++) {\n' +
+                    '        if (i % 5 === 0 && i % 3 === 0) {\n' +
+                    '            answer += "FizzBuzz ";\n' +
+                    '        } else if (i % 5 === 0) {\n' +
+                    '            answer += "Buzz "\n;\n' +
+                    '        } else if (i % 3 === 0) {\n' +
+                    '            answer += "Fizz ";\n' +
+                    '        } else {\n' +
+                    '            answer += i + " ";\n' +
+                    '        }\n' +
+                    '        answer += "<br>";\n' +
+                    '    }\n' +
+                    '    return answer;\n' +
+                    '}\n</pre></div>');
+                    SyntaxHighlighter.highlight($('#toColor'));
+
+
+            }
             e.preventDefault();
-        }
-    },
-    state2: {
-        title: 'FizzBuzz Result',
-        html: '',
-        buttons: { Back: -1, Next: 1 },
-        submit: function (e, v, m, f) {
         }
     }
 };
@@ -345,22 +407,52 @@ var dispDemo = {
     state1: {
         title: 'Perfect Number Finder',
         html: '<div type="row" id="answer-1-row">' +
-                '</div>',
-        buttons: { Back: -1, Submit: 0, Next: 1 },
+                '</div>'+
+        '<div id="code">'+
+    '</div>',
+        buttons: { Back: -1, Submit: 0, close: 1, Code: 2 },
         //focus: ":input:first",
         submit: function (e, v, m, f) {
 
-            if (v == 1) $.prompt.goToState('state2')
+            if (v == 1) $.prompt.close();
             if (v == 0) fillAnswer(disp(), $('#answer-1-row'), '');
             if (v == -1) $.prompt.goToState('state0');
+            if (v == 2) {
+                if ($('#madeCode').is(':visible')) {
+                    $('#madeCode').hide();
+                } else {
+                    $('#madeCode').show();
+                }
+                $('#code').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
+'function isPerfect(num) {' +
+'    if (num <= 5) {'+
+'        return false;'+
+'    }'+
+'    var div_sum = 0;'+
+'    for (i = 0; i < num; i++) {'+
+'        if (num % i === 0) {'+
+'            div_sum += i;'+
+'        }'+
+'    }'+
+'    if (div_sum === num) {'+
+'        return true;'+
+'    } else {'+
+'        return false;'+
+'    }'+
+'}'+
+'function disp() {'+
+'    var answer = "";'+
+'    for (var i = 6; i <= 10000; i++) {'+
+'        if (isPerfect(i)) {'+
+'            answer += i + "\n";'+
+'        }'+
+'    }'+
+'    return answer;'+
+'}\n</pre></div>');
+                SyntaxHighlighter.highlight($('#toColor'));
+
+            }
             e.preventDefault();
-        }
-    },
-    state2: {
-        title: 'Perfect Number Finder',
-        html: '',
-        buttons: { Back: -1, Next: 1 },
-        submit: function (e, v, m, f) {
         }
     }
 };
@@ -381,35 +473,71 @@ var happyDemo = {
         title: 'Happy Numbers Finder',
         html: '<div type="row">' +
                     '<div type="col-xs-1">' +
-                            ' <p>I expanded this method to accept more than three numbers.  Please input as many numbers as you would like, separated by spaces.</p>' +
+                            ' <p>Click Run please.</p>' +
                     ' </div>' +
-                    '<div type="col-xs-1">' +
+                    '<div id="code">' +
                     '</div>' +
                 '</div>' +
                 '<div type="row" id="answer-1-row">' +
                 '</div>',
-        buttons: { Back: -1, Submit: 0, Next: 1 },
+        buttons: { Back: -1, Run: 0, close: 1, Code: 2 },
         //focus: ":input:first",
         submit: function (e, v, m, f) {
 
-            if (v == 1) $.prompt.goToState('state2')
+            if (v == 1) $.prompt.close();
             if (v == 0) fillAnswer(happy(), $('#answer-1-row'), 'The first five happy numbers are: ');
             if (v == -1) $.prompt.goToState('state0');
+            if (v == 2) {
+                if ($('#madeCode').is(':visible')) {
+                    $('#madeCode').hide();
+                } else {
+                    $('#madeCode').show();
+                }
+                $('#code').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
+'function happy() {\n' +
+'    var count = 0;\n'+
+'    var attempts = 10;\n'+
+'    var currentNum = 1;\n'+
+'    var answer = [];\n'+
+'    while (count < 5) {\n'+
+'        var startNum = currentNum;\n'+
+'        for (i = 0; i < attempts; i++) {\n'+
+'            var foo = [];\n'+
+'            while (currentNum > 0) {\n'+
+'                foo[foo.length] = currentNum % 10;\n'+
+'                currentNum = Math.floor(currentNum / 10);\n'+
+'            }\n'+
+'            var theSum = 0;\n'+
+'            for (j in foo) {\n'+
+'                foo[j] *= foo[j];\n'+
+'                theSum += foo[j];\n'+
+'            }\n'+
+'            currentNum = theSum;\n'+
+'            if (currentNum == 1) {\n'+
+'                count++;\n'+
+'                answer[answer.length] = startNum;\n'+
+'                break;\n'+
+'            }\n'+
+'        }\n'+
+'        currentNum = startNum + 1;\n'+
+'    }\n'+
+'    var strAnswer = "";\n'+
+'    for(var i=0; i<answer.length; i++) {\n'+
+'        strAnswer += answer[i] + "\n";\n'+
+'    }\n'+
+'    return strAnswer;\n'+
+'}\n</pre></div>');
+                SyntaxHighlighter.highlight($('#toColor'));
+
+            }
             e.preventDefault();
-        }
-    },
-    state2: {
-        title: 'Happy Numbers Result',
-        html: '',
-        buttons: { Back: -1, Next: 1 },
-        submit: function (e, v, m, f) {
         }
     }
 };
 //demo of finding armstrong numbers
 var armDemo = {
     state0: {
-        title: 'Max Method',
+        title: 'Armstrong Number Method',
         html: '<h3>Objective: </h3><p>Create a function that finds all the three-digit Armstrong numbers.  An Armstrong number is an integer such that the sum of the cubes of its digits is equal to the number itself.  For example, 371 is an Armstrong number since 3^3 + 7^3 + 1^3 = 371.</p>',
         buttons: { Next: 1 },
         //focus: "input[name='fname']",
@@ -422,26 +550,44 @@ var armDemo = {
     state1: {
         title: 'Max Method input',
         html: '<div type="row">' +
-                    '<div type="col-xs-1">' +
+                    '<div id="code">' +
                     '</div>' +
                 '</div>' +
                 '<div type="row" id="answer-1-row">' +
                 '</div>',
-        buttons: { Back: -1, Submit: 0, Next: 1 },
+        buttons: { Back: -1, Submit: 0, close: 1, Code: 2 },
         //focus: ":input:first",
         submit: function (e, v, m, f) {
 
-            if (v == 1) $.prompt.goToState('state2')
+            if (v == 1) $.prompt.close();
             if (v == 0) fillAnswer(armstrong(), $('#answer-1-row'), 'The three digit Armstrong Numbers are: ');
             if (v == -1) $.prompt.goToState('state0');
+            if (v == 2) {
+                if ($('#madeCode').is(':visible')) {
+                    $('#madeCode').hide();
+                } else {
+                    $('#madeCode').show();
+                }
+                $('#code').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
+'function armstrong() {\n' +
+'    var answer = "";\n'+
+'    for (var i = 100; i < 1000; i++) {\n'+
+'        var temp = i;\n'+
+'        var sum = 0;\n'+
+'        while (temp > 0) {\n'+
+'            sum += Math.pow((temp % 10), 3);\n'+
+'            temp = Math.floor(temp / 10);\n'+
+'        }\n'+
+'        if (sum == i) {\n'+
+'            answer += i + "\n";\n'+
+'        \n'+
+'    }\n'+
+'    return answer;\n'+
+'}\n</pre></div>');
+                SyntaxHighlighter.highlight($('#toColor'));
+
+            }
             e.preventDefault();
-        }
-    },
-    state2: {
-        title: 'Max Method Result',
-        html: '',
-        buttons: { Back: -1, Next: 1 },
-        submit: function (e, v, m, f) {
         }
     }
 };
@@ -460,7 +606,6 @@ function maxOfThree() {
     }
     return temp;
 }
-
 function sum() {
     var temp = 0;
     var strArr = arguments[0].split(" ");
@@ -469,7 +614,6 @@ function sum() {
     }
     return temp;
 }
-
 function multiply() {
     var temp = 1;
     var strArr = arguments[0].split(" ");
@@ -478,7 +622,6 @@ function multiply() {
     }
     return temp;
 }
-
 function factorial() {
     var temp = 1;
     var strArr = arguments[0].split(" ");
@@ -488,7 +631,6 @@ function factorial() {
     }
     return temp;
 }
-
 function palindrome() {
     var temp = String(arguments[0]).toLowerCase();
     for (i = 0; i < temp.length / 2 - 1; i++) {
@@ -498,7 +640,6 @@ function palindrome() {
     }
     return true;
 }
-
 function fizzBuzz() {
     var answer = "";
     for (i = 1; i <= 100; i++) {
@@ -515,7 +656,6 @@ function fizzBuzz() {
     }
     return answer;
 }
-
 function isPerfect() {
     var num = Number(arguments[0]);
     if (num <= 5) {
@@ -534,25 +674,25 @@ function isPerfect() {
         return false;
     }
 }
-function isPerfect(rawr) {
-    if (rawr <= 5) {
+function isPerfect(num) {
+    if (num <= 5) {
         return false;
     }
     var div_sum = 0;
-    for (i = 0; i < rawr; i++) {
-        if (rawr % i === 0) {
+    for (i = 0; i < num; i++) {
+        if (num % i === 0) {
             div_sum += i;
         }
     }
 
-    if (div_sum === rawr) {
+    if (div_sum === num) {
         return true;
     } else {
         return false;
     }
 }
 function disp() {
-    var answer = "Perfect numbers less than 10,000:\n";
+    var answer = "";
     for (var i = 6; i <= 10000; i++) {
         if (isPerfect(i)) {
             answer += i + "\n";
@@ -560,7 +700,6 @@ function disp() {
     }
     return answer;
 }
-
 function happy() {
     var count = 0;
     var attempts = 10;
@@ -594,9 +733,8 @@ function happy() {
     }
     return strAnswer;
 }
-
 function armstrong() {
-    var answer = "Three Digit Armstrong Numbers:\n";
+    var answer = "";
     for (var i = 100; i < 1000; i++) {
         var temp = i;
         var sum = 0;
@@ -610,3 +748,4 @@ function armstrong() {
     }
     return answer;
 }
+
