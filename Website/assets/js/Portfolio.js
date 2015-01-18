@@ -1,4 +1,5 @@
-﻿//functions that call the modal windows
+﻿var showJavaScript = true;
+//functions that call the modal windows
 function callMax() {
     $.prompt(maxDemo);
 }
@@ -59,7 +60,10 @@ var maxDemo = {
         submit: function (e, v, m, f) {
             
             if (v == 1) $.prompt.goToState('state2');
-            if (v == 0) fillAnswer(maxOfThree($('#number1').val()), $('#answer-1-row'), 'The largest number submitted is: ');
+            if (v == 0  && showJavaScript) fillAnswer(maxOfThree($('#number1').val()), $('#answer-1-row'), 'The largest number submitted is: ');
+            if (v == 0 && !showJavaScript){
+                fillAnswer(getCS1($('#number1').val(), $('#answer-1-row'), 'The largest number submitted is: '));
+            }
             if (v == -1) $.prompt.goToState('state0');
             if (v == 2) {
                 if ($('#madeCode').is(':visible')) {
@@ -67,6 +71,7 @@ var maxDemo = {
                 } else {
                     $('#madeCode').show();
                 }
+                if(showJavaScript){
                 $('#unmadeCode').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
 'function maxOfThree() {\n' +
 '    var temp = 0;\n' +
@@ -78,8 +83,13 @@ var maxDemo = {
 '    }\n' +
 '    return temp;\n' +
 '}\n</pre></div>');
-                SyntaxHighlighter.highlight($('#toColor'));
-
+            } else {
+                $('#unmadeCode').replaceWith('<div id="madeCode"><pre class="brush: csharp" id="toColor">' +
+'static int maxOfThree(int a, int b, int c)\n'+
+'{return Math.Max(Math.Max(a, b), c);}\n</pre></div>');
+            }
+            SyntaxHighlighter.highlight($('#toColor'));
+        
                 
             }
             e.preventDefault();
@@ -749,3 +759,70 @@ function armstrong() {
     return answer;
 }
 
+function javaProbs() {
+    showJavaScript = true;
+    $('#fun1').replaceWith('<h1 id="fun1" class="codeC" onclick="callMax()">Max</h1>');
+    $('#fun2').replaceWith('<h1 id="fun2" class="codeC" onclick="callSum()">Sum</h1>');
+    $('#fun3').replaceWith('<h1 id="fun3" class="codeC" onclick="callMultiply()">Multiply</h1>');
+    $('#fun4').replaceWith('<h1 id="fun4" class="codeC" onclick="callFactorial()">Factorial</h1>');
+    $('#fun5').replaceWith('<h1 id="fun5" class="codeC" onclick="callPalindrome()">Palindrome</h1>');
+    $('#fun6').replaceWith('<h1 id="fun6" class="codeC" onclick="callFizzBuzz()">FizzBuzz</h1>');
+    $('#fun7').replaceWith('<h1 id="fun7" class="codeC" onclick="callDisp()">Find Perfect</h1>');
+    $('#fun8').replaceWith('<h1 id="fun8" class="codeC" onclick="callIsHappy()">Happy Numbers</h1>');
+    $('#fun9').replaceWith('<h1 id="fun9" class="codeC" onclick="callArmstrong()">Find Armstrong</h1>');
+}
+function cProbs() {
+    showJavaScript = false;
+    $('#fun1').replaceWith('<h1 id="fun1" class="codeC" onclick="getCS1()">Max</h1>');
+    $('#fun2').replaceWith('<h1 id="fun2" class="codeC" onclick="getCS2()">Sum</h1>');
+    $('#fun3').replaceWith('<h1 id="fun3" class="codeC" onclick="getCS3()">Multiply</h1>');
+    $('#fun4').replaceWith('<h1 id="fun4" class="codeC" onclick="getCS4()">Factorial</h1>');
+    $('#fun5').replaceWith('<h1 id="fun5" class="codeC" onclick="getCS5()">Palindrome</h1>');
+    $('#fun6').replaceWith('<h1 id="fun6" class="codeC" onclick="getCS6()">FizzBuzz</h1>');
+    $('#fun7').replaceWith('<h1 id="fun7" class="codeC" onclick="getCS7()">Longest Word</h1>');
+    $('#fun8').replaceWith('<h1 id="fun8" class="codeC" onclick="getCS8()">Show Longer Than</h1>');
+    $('#fun9').replaceWith('<h1 id="fun9" class="codeC" onclick="getCS9()">Count Alice</h1>');
+}
+function getCS1(str) {
+    alert($.get("/Home/GetCS1"));
+}
+function getCS2() {
+    $.get("/Home/GetCS2", function (data) {
+        alert(data);
+    });
+}
+function getCS3() {
+    $.get("/Home/GetCS3", function (data) {
+        alert(data);
+    });
+}
+function getCS4() {
+    $.get("/Home/GetCS4", function (data) {
+        alert(data);
+    });
+}
+function getCS5() {
+    $.get("/Home/GetCS5", function (data) {
+        alert(data);
+    });
+}
+function getCS6() {
+    $.get("/Home/GetCS6", function (data) {
+        alert(data);
+    });
+}
+function getCS7() {
+    $.get("/Home/GetCS7", function (data) {
+        alert(data);
+    });
+}
+function getCS8() {
+    $.get("/Home/GetCS8", function (data) {
+        alert(data);
+    });
+}
+function getCS9() {
+    $.get("/Home/GetCS9", function (data) {
+        alert(data);
+    });
+}

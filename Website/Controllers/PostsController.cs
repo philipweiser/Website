@@ -46,10 +46,11 @@ namespace Website.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Created,Updated,Title,Body,MediaURL")] Post post)
+        public ActionResult Create([Bind(Include = "Id,Created,Title,Body,MediaURL")] Post post)
         {
             if (ModelState.IsValid)
             {
+                post.Created = DateTimeOffset.Now;
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");

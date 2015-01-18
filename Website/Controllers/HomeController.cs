@@ -26,6 +26,51 @@ namespace Website.Controllers
 
             return View();
         }
+        public ActionResult GetCS1()
+        {
+            string message = "hello world";
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        public ActionResult GetCS2()
+        {
+            string message = "hello world";
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        public ActionResult GetCS3()
+        {
+            string message = "hello world";
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        public ActionResult GetCS4()
+        {
+            string message = "hello world";
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        public ActionResult GetCS5()
+        {
+            string message = "hello world";
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        public ActionResult GetCS6()
+        {
+            string message = "hello world";
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        public ActionResult GetCS7()
+        {
+            string message = "hello world";
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        public ActionResult GetCS8()
+        {
+            string message = "hello world";
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        public ActionResult GetCS9()
+        {
+            string message = "hello world";
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
         public ActionResult Resume()
         {
             ViewBag.Message = "Philip Weiser - Resume";

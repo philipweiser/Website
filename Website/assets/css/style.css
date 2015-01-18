@@ -159,7 +159,7 @@ h3{
 
 #headerwrap {
 	background: url(../img/back.jpg) no-repeat center top;
-	margin-top: 53px;
+	margin-top: 0px;
 	padding-top: 250px;
 	text-align:center;
 	background-attachment: scroll;
@@ -255,7 +255,7 @@ h3{
 
 #aboutwrap {	
 	background: url(../img/about.jpg) no-repeat center top;
-	margin-top: 53px;
+	margin-top: 0px;
 	padding-top: 150px;
 	text-align:center;
 	background-attachment: scroll;
