@@ -67,6 +67,9 @@ namespace Website.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Post post = db.Posts.Find(id);
+            //Post p = db.Posts.Find(Id);
+            // var model = p.Comments.ToList();
+            //db.Comments.Where(c => c.PostId == id);
             if (post == null)
             {
                 return HttpNotFound();

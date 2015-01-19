@@ -32,7 +32,7 @@ namespace Website.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("SQLAzureConnection", throwIfV1Schema: false)
+            : base("PhilipWeiserDB", throwIfV1Schema: false)
         {
         }
 

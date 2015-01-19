@@ -159,9 +159,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CodePost.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\ExercisesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MaxPost.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,6 +181,7 @@
   <ItemGroup>
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\jquery-impromptu.min.css" />
     <Content Include="assets\css\shCore.css" />
     <Content Include="assets\css\shThemeDefault.css" />
     <Content Include="assets\css\style.css" />
@@ -214,6 +218,8 @@
     <Content Include="assets\img\vertical-line.png" />
     <Content Include="assets\img\work.jpg" />
     <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\jquery-impromptu.min.js" />
+    <Content Include="assets\js\PortfolioCS.js" />
     <Content Include="assets\js\Portfolio.js" />
     <Content Include="assets\js\Resume.js" />
     <Content Include="favicon.ico" />
@@ -301,6 +307,10 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Home\CSProblemsView.cshtml" />
+    <Content Include="Views\Home\JSProblemsView.cshtml" />
+    <Content Include="Views\Exercises\MaxOfThree.cshtml" />
+    <Content Include="Views\Exercises\GetCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

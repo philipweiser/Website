@@ -32,53 +32,6 @@ function callArmstrong() {
 function CS1() {
     $.prompt(CS1Demo);
 }
-// CSDemo of max of three
-var CS1Demo = {
-    state0: {
-        title: 'Max Method',
-        html: '<h3>Objective: </h3><p>Create a function that accepts three numbers as arguments and returns the largest one.</p>',
-        buttons: { Next: 1 },
-        //focus: "input[name='fname']",
-        submit: function (e, v, m, f) {
-
-            e.preventDefault();
-            $.prompt.goToState('state1');
-        }
-    },
-    state1: {
-        title: 'Max Method input',
-        html: '<div type="row" id="answer-1-row">'+
-                '</div>',
-        buttons: { Back: -1, Submit: 0, Code: 2, Close: 1 },
-        //focus: ":input:first",
-        submit: function (e, v, m, f) {
-
-            if (v == 1) $.prompt.close();
-            if (v == 0) $('#answer-1-row').replaceWith('@Html.Partial("CSProblemsView")');
-            if (v == -1) $.prompt.goToState('state0');
-            if (v == 2) {
-                if ($('#madeCode').is(':visible')) {
-                    $('#madeCode').hide();
-                } else {
-                    $('#madeCode').show();
-                }
-                $('#unmadeCode').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
-'function maxOfThree() {\n' +
-'    var temp = 0;\n' +
-'    var strArr = arguments[0].split(" ");\n' +
-'    for (var i = 0; i < strArr.length; i++) {\n' +
-'        if (Number(strArr[i]) > temp) {\n' +
-'            temp = strArr[i];\n' +
-'        }\n' +
-'    }\n' +
-'    return temp;\n' +
-'}\n</pre></div>');
-                SyntaxHighlighter.highlight($('#toColor'));
-            }
-            e.preventDefault();
-        }
-    }
-};
 //demo of max of three function
 var maxDemo = {
     state0: {
@@ -94,23 +47,32 @@ var maxDemo = {
     },
     state1: {
         title: 'Max Method input',
-        html:   '<div type="row">' +
-                    '<div type="col-xs-1">' +
-                        '<input type="text" id="number1" size="15">' +
-                            ' <p>I expanded this method to accept more than three numbers.  Please input as many numbers as you would like, separated by spaces.</p>' +
-                    ' </div>' +
-                    '<div id="unmadeCode">' +
-                    '</div>' +
-                '</div>' +
-                '<div type="row" id="answer-1-row">'+
-                '</div>',
+        html: $('#maxOfThree1Template').html(),
         buttons: { Back: -1, Submit: 0,  Code: 2, Close: 1 },
         //focus: ":input:first",
         submit: function (e, v, m, f) {
             
             if (v == 1) $.prompt.close();
             else if (v == 0) {
-                fillAnswer(maxOfThree($('#number1').val()), $('#answer-1-row'), 'The largest number submitted is: ');
+                //fillAnswer(maxOfThree($('#number1').val()), $('#answer-1-row'), 'The largest number submitted is: ');
+                var text = $('#number1').val();
+                var data = text[0] != '[' ? '[' + text : text;
+                data = data[data.length - 1] != ']' ? data + ']' : data;
+                    
+
+                var options = {
+                    url: '/Exercises/MaxOfThree',
+                    type: 'POST',
+                    data: { numbers: eval(data) }
+                }
+                $.ajax(options).then(function (response) {
+                    console.log(response);
+                    $('#answer-1-row').replaceWith(response);
+                },
+                function (error) {
+                    console.log(error);
+                    //output error in some way
+                });
             }
             else if (v == -1) $.prompt.goToState('state0');
             else if (v == 2) {
@@ -119,18 +81,16 @@ var maxDemo = {
                 } else {
                     $('#madeCode').show();
                 }
-                $('#unmadeCode').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
-'function maxOfThree() {\n' +
-'    var temp = 0;\n' +
-'    var strArr = arguments[0].split(" ");\n' +
-'    for (var i = 0; i < strArr.length; i++) {\n' +
-'        if (Number(strArr[i]) > temp) {\n' +
-'            temp = strArr[i];\n' +
-'        }\n' +
-'    }\n' +
-'    return temp;\n' +
-'}\n</pre></div>');
-            SyntaxHighlighter.highlight($('#toColor'));
+
+                var options = {
+                    url: '/Exercises/GetCode',
+                    type: 'POST',
+                    data: { Name: 'maxOfThree', Type: 'int?' }
+                }
+                $.ajax(options).then(function (response) {
+                    $('#unmadeCode').replaceWith(response);
+                    SyntaxHighlighter.highlight($('#madeCode'));
+                });
             }
             e.preventDefault();
         }

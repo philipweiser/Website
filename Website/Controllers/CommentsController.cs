@@ -14,6 +14,14 @@ namespace Website.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        // GET: Comments/Index
+        [Authorize(Roles = "Moderator")]
+        public ActionResult Index(int? id)
+        {
+            return View(db.Posts.Find(id).Comments.ToList());
+            //string text = "this is the text";
+            //var matches = db.Posts.Where(p => p.Body.Contains(text)).ToList();
+        }
         // GET: Comments
         public ActionResult Index()
         {
@@ -22,6 +30,7 @@ namespace Website.Controllers
         }
 
         // GET: Comments/Details/5
+        [Authorize(Roles = "Moderator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +46,7 @@ namespace Website.Controllers
         }
 
         // GET: Comments/Create
+        [Authorize]
         public ActionResult Create()
         {
             //ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FirstName");
@@ -49,6 +59,7 @@ namespace Website.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
         {
             if (ModelState.IsValid)
@@ -64,6 +75,7 @@ namespace Website.Controllers
         }
 
         // GET: Comments/Edit/5
+        [Authorize(Roles = "Moderator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,6 +97,7 @@ namespace Website.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Moderator")]
         public ActionResult Edit([Bind(Include = "Id,PostId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
         {
             if (ModelState.IsValid)
@@ -99,6 +112,7 @@ namespace Website.Controllers
         }
 
         // GET: Comments/Delete/5
+        [Authorize(Roles = "Moderator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,6 +130,7 @@ namespace Website.Controllers
         // POST: Comments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Comment comment = db.Comments.Find(id);

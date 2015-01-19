@@ -9,10 +9,10 @@ using System.Web.UI.WebControls;
 using System.Web.Services;
 namespace ConsoleSln
 {
-    class Program
+    public class Program
     {
         [WebMethod]
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int count = 0;
             foreach (KeyValuePair<string, int> foo in wordFreq())
@@ -34,26 +34,34 @@ namespace ConsoleSln
             Console.ReadKey();
         }
         [WebMethod]
-        static int maxOfThree(int a, int b, int c)
+        public static int? maxOfThree(List<int> numbers)
         {
-            return Math.Max(Math.Max(a, b), c);
+            int? max = null;
+            foreach (var number in numbers)
+            {
+                if (max == null)
+                    max = number;
+                else if (max.Value < number)
+                    max = number;
+            }
+            return max.Value;
         }
         [WebMethod]
-        static int sum(int[] toSum)
+        public static int sum(int[] toSum)
         {
             int theSum = 0;
             foreach (int i in toSum)
                 theSum += i;
             return theSum;
         }
-        static int multiply(int[] toMult)
+        public static int multiply(int[] toMult)
         {
             int answer = 1;
             foreach (int i in toMult)
                 answer *= i;
             return answer;
         }
-        static int factorial(int num)
+        public static int factorial(int num)
         {
             int answer = 1;
             for (int i = num; i > 0; i--)
@@ -62,7 +70,7 @@ namespace ConsoleSln
             }
             return answer;
         }
-        static bool palindrome(string foo)
+        public static bool palindrome(string foo)
         {
             for (int i = 0; i < foo.Length/2-1; i++)
             {
@@ -73,7 +81,7 @@ namespace ConsoleSln
             }
                 return true;
         }
-        static string fizzBuzz()
+        public static string fizzBuzz()
         {
             string answer = "";
             for (int i = 1; i <= 100; i++)
@@ -97,7 +105,7 @@ namespace ConsoleSln
             }
             return answer;
         }
-        static string longestWord()
+        public static string longestWord()
         {
             string [] tokens;
             string answer = "";
@@ -113,7 +121,7 @@ namespace ConsoleSln
             }
             return answer;
         }
-        static List<string> filterLongWords(int length)
+        public static List<string> filterLongWords(int length)
         {
             string[] tokens;
             List<string> answer = new List<string>();
@@ -130,7 +138,7 @@ namespace ConsoleSln
             
             return answer;
         }
-        static List<KeyValuePair<string, int>> wordFreq() {
+        public static List<KeyValuePair<string, int>> wordFreq() {
             //open file, tokenize, if token is unique, create a new key-value pair, set value to 1, else incremement value
             string[] tokens;
             Dictionary<string, int> answer = new Dictionary<string,int>();
@@ -164,7 +172,7 @@ namespace ConsoleSln
             myList.Reverse(0, myList.Count);
             return myList;
         }
-        static int countAlice()
+        public static int countAlice()
         {
             int answer = 0;
             string[] tokens;
