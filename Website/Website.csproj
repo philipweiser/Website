@@ -40,6 +40,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SendGrid.SmtpApi">
+      <HintPath>..\packages\SendGrid.SmtpApi.1.1.3\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGridMail">
+      <HintPath>..\packages\Sendgrid.5.0.0\lib\SendGridMail.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -162,10 +168,12 @@
     <Compile Include="Controllers\CodePost.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ExercisesController.cs" />
+    <Compile Include="Controllers\FactorialPost.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MaxPost.cs" />
     <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\SumMultPost.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -185,8 +193,6 @@
     <Content Include="assets\css\shCore.css" />
     <Content Include="assets\css\shThemeDefault.css" />
     <Content Include="assets\css\style.css" />
-    <Content Include="assets\css\vex-theme-os.css" />
-    <Content Include="assets\css\vex.css" />
     <Content Include="assets\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\img\about.jpg" />
@@ -194,15 +200,12 @@
     <Content Include="assets\img\back.jpg" />
     <Content Include="assets\img\back2.jpg" />
     <Content Include="assets\img\cflogo.jpg" />
-    <Content Include="assets\img\drilling_rig_c_nestor_galina.jpg" />
     <Content Include="assets\img\duke_logo.png" />
     <Content Include="assets\img\eton_logo.jpg" />
     <Content Include="assets\img\horizon_logo.png" />
     <Content Include="assets\img\linkedin_logo.png" />
     <Content Include="assets\img\noa_logo.png" />
     <Content Include="assets\img\nomac_logo.png" />
-    <Content Include="assets\img\pinstripe_bg_full - Copy.jpg" />
-    <Content Include="assets\img\pinstripe_bg_full.jpg" />
     <Content Include="assets\img\portfolio\folio01.jpg" />
     <Content Include="assets\img\portfolio\folio01.png" />
     <Content Include="assets\img\portfolio\folio02.png" />
@@ -311,9 +314,22 @@
     <Content Include="Views\Home\JSProblemsView.cshtml" />
     <Content Include="Views\Exercises\MaxOfThree.cshtml" />
     <Content Include="Views\Exercises\GetCode.cshtml" />
+    <Content Include="Views\Exercises\SumMult.cshtml" />
+    <Content Include="Views\Exercises\Palindrome.cshtml" />
+    <Content Include="Views\Exercises\Factorial.cshtml" />
+    <Content Include="Views\Exercises\FizzBuzz.cshtml" />
+    <Content Include="Views\Exercises\LongestWord.cshtml" />
+    <Content Include="Views\Exercises\FilterLong.cshtml" />
+    <Content Include="Views\Exercises\WordFreq.cshtml" />
+    <Content Include="Views\Exercises\CountAlice.cshtml" />
+    <Content Include="Views\Account\ResendEmailConfirmation.cshtml" />
+    <Content Include="Views\Account\ResendEmailConfirmationSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\img\blog\" />
+    <Folder Include="Views\FactorialPost\" />
+    <Folder Include="Views\SumMultPost\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

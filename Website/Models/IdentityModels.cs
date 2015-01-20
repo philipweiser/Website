@@ -32,7 +32,7 @@ namespace Website.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("PhilipWeiserDB", throwIfV1Schema: false)
+            : base("PhilipWeiserWebsiteDB", throwIfV1Schema: false)
         {
         }
 

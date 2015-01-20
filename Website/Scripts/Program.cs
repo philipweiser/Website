@@ -47,29 +47,28 @@ namespace ConsoleSln
             return max.Value;
         }
         [WebMethod]
-        public static int sum(int[] toSum)
+        public static int[] sumMult(List<int> numbers)
         {
             int theSum = 0;
-            foreach (int i in toSum)
+            foreach (int i in numbers)
                 theSum += i;
-            return theSum;
-        }
-        public static int multiply(int[] toMult)
-        {
+
             int answer = 1;
-            foreach (int i in toMult)
+            foreach (int i in numbers)
                 answer *= i;
-            return answer;
+            return new int[2]{theSum, answer};
         }
-        public static int factorial(int num)
+        [WebMethod]
+        public static int factorial(int number)
         {
             int answer = 1;
-            for (int i = num; i > 0; i--)
+            for (int i = number; i > 0; i--)
             {
                 answer *= i;
             }
             return answer;
         }
+        [WebMethod]
         public static bool palindrome(string foo)
         {
             for (int i = 0; i < foo.Length/2-1; i++)
@@ -81,6 +80,7 @@ namespace ConsoleSln
             }
                 return true;
         }
+        [WebMethod]
         public static string fizzBuzz()
         {
             string answer = "";
@@ -105,6 +105,7 @@ namespace ConsoleSln
             }
             return answer;
         }
+        [WebMethod]
         public static string longestWord()
         {
             string [] tokens;
@@ -121,6 +122,7 @@ namespace ConsoleSln
             }
             return answer;
         }
+        [WebMethod]
         public static List<string> filterLongWords(int length)
         {
             string[] tokens;
@@ -138,6 +140,7 @@ namespace ConsoleSln
             
             return answer;
         }
+        [WebMethod]
         public static List<KeyValuePair<string, int>> wordFreq() {
             //open file, tokenize, if token is unique, create a new key-value pair, set value to 1, else incremement value
             string[] tokens;
@@ -172,6 +175,7 @@ namespace ConsoleSln
             myList.Reverse(0, myList.Count);
             return myList;
         }
+        [WebMethod]
         public static int countAlice()
         {
             int answer = 0;

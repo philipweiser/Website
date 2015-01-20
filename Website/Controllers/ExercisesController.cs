@@ -13,6 +13,38 @@ namespace Website.Controllers
         {
             return PartialView(model: Program.maxOfThree(numberList.numbers));
         }
+        public ActionResult SumMult(SumMultPost numberList)
+        {
+            return PartialView(model: Program.sumMult(numberList.numbers));
+        }
+        public ActionResult Factorial(FactorialPost number)
+        {
+            return PartialView(model: Program.factorial(number.number));
+        }
+        //public ActionResult Palindrome(PalindromePost number)
+        //{
+        //    return PartialView(model: Program.palindrome(str.str));
+        //}
+        public ActionResult FizzBuzz(MaxPost numberList)
+        {
+            return PartialView(model: Program.maxOfThree(numberList.numbers));
+        }
+        public ActionResult LongestWord(MaxPost numberList)
+        {
+            return PartialView(model: Program.maxOfThree(numberList.numbers));
+        }
+        public ActionResult FilterLong(MaxPost numberList)
+        {
+            return PartialView(model: Program.maxOfThree(numberList.numbers));
+        }
+        public ActionResult WordFreq(MaxPost numberList)
+        {
+            return PartialView(model: Program.maxOfThree(numberList.numbers));
+        }
+        public ActionResult CountAlice(MaxPost numberList)
+        {
+            return PartialView(model: Program.maxOfThree(numberList.numbers));
+        }
 
         public ActionResult GetCode(CodePost functionName)
         {

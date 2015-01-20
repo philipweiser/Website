@@ -11,6 +11,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Website.Models;
+using SendGrid;
+using System.Net;
+using System.Configuration;
 
 namespace Website
 {
@@ -18,7 +21,25 @@ namespace Website
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+            try
+            {
+                var mail = new SendGridMessage()
+                {
+                    From = new System.Net.Mail.MailAddress("noreply@coderfoundry.com"),
+                    Subject = message.Subject,
+                    Html = message.Body
+                };
+                mail.AddTo(message.Destination);
+
+                var credentials = new NetworkCredential(
+                    ConfigurationManager.AppSettings["mailUser"],
+                    ConfigurationManager.AppSettings["mailPassword"]
+                    );
+                var transport = new Web(credentials);
+
+                transport.Deliver(mail);
+            }
+            catch(Exception e){}
             return Task.FromResult(0);
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -46,10 +47,16 @@ namespace Website.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Created,Title,Body,MediaURL")] Post post)
+        public ActionResult Create([Bind(Include = "Id,Created,Title,Body,MediaURL")] Post post, HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
+                if (fileUpload != null && fileUpload.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(fileUpload.FileName);
+                    fileUpload.SaveAs(Path.Combine(Server.MapPath("~/img/blog/"), fileName));
+                    post.MediaURL = "~/assets/img/blog/" + fileName;
+                }
                 post.Created = DateTimeOffset.Now;
                 db.Posts.Add(post);
                 db.SaveChanges();

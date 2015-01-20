@@ -50,6 +50,8 @@ C:\Users\Phil\Documents\GitHub\Website\Website\bin\Microsoft.Owin.Security.OAuth
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.csprojResolveAssemblyReference.cache
 C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.dll
 C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.pdb
+C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.csprojResolveAssemblyReference.cache
+C:\Users\Phil\Documents\GitHub\Website\Website\bin\SendGrid.SmtpApi.dll
+C:\Users\Phil\Documents\GitHub\Website\Website\bin\SendGridMail.dll
