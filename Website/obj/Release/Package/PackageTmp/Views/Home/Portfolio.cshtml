@@ -1,0 +1,24 @@
+﻿<div id="workwrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <h3 onclick="javaProbs()" style="cursor:pointer">JavaScript Problemset</h3>
+                <h3 onclick="csProbs()" style="cursor:pointer">C# Problemset</h3>
+                <h4>BY PHILIP WEISER</h4>
+            </div>
+        </div><! --/row -->
+    </div> <!-- /container -->
+</div><! --/workwrap -->
+<section id="works"></section>
+
+
+<script src="~/Scripts/shCore.js"></script>
+<link href="~/assets/css/shThemeDefault.css" rel="stylesheet" />
+<link href="~/assets/css/shCore.css" rel="stylesheet" />
+<script src="~/Scripts/shBrushJScript.js"></script>
+<script src="~/Scripts/shBrushCSharp.js"></script>
+
+<script src="~/assets/js/jquery-impromptu.min.js"></script>
+<link href="~/assets/css/jquery-impromptu.min.css" rel="stylesheet" />
+@Html.Partial("JSProblemsView")
+@Html.Partial("CSProblemsView")

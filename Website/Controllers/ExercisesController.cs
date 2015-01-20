@@ -9,43 +9,45 @@ namespace Website.Controllers
 {
     public class ExercisesController : Controller
     {
-        public ActionResult MaxOfThree(MaxPost numberList)
+        public ActionResult MaxOfThree(int[] numberList)
         {
-            return PartialView(model: Program.maxOfThree(numberList.numbers));
+            return PartialView(model: Program.maxOfThree(numberList));
         }
-        public ActionResult SumMult(SumMultPost numberList)
+        public ActionResult SumMult(int[] numberList)
         {
-            return PartialView(model: Program.sumMult(numberList.numbers));
+            return PartialView(model: Program.sumMult(numberList));
         }
-        public ActionResult Factorial(FactorialPost number)
+        public ActionResult Factorial(int number)
         {
-            return PartialView(model: Program.factorial(number.number));
+            return PartialView(model: Program.factorial(number));
         }
-        //public ActionResult Palindrome(PalindromePost number)
-        //{
-        //    return PartialView(model: Program.palindrome(str.str));
-        //}
-        public ActionResult FizzBuzz(MaxPost numberList)
+        public ActionResult Palindrome(string fact)
         {
-            return PartialView(model: Program.maxOfThree(numberList.numbers));
+            return PartialView(model: Program.palindrome(fact));
         }
-        public ActionResult LongestWord(MaxPost numberList)
+        public ActionResult FizzBuzz()
         {
-            return PartialView(model: Program.maxOfThree(numberList.numbers));
+            return PartialView(model: Program.fizzBuzz());
         }
-        public ActionResult FilterLong(MaxPost numberList)
+        [ValidateInput(false)]
+        public ActionResult LongestWord()
         {
-            return PartialView(model: Program.maxOfThree(numberList.numbers));
+            return PartialView(model: Program.longestWord());
         }
-        public ActionResult WordFreq(MaxPost numberList)
+        public ActionResult FilterLong(int length)
         {
-            return PartialView(model: Program.maxOfThree(numberList.numbers));
+            return PartialView(model: Program.filterLongWords(length));
         }
-        public ActionResult CountAlice(MaxPost numberList)
+        public ActionResult WordFreq()
         {
-            return PartialView(model: Program.maxOfThree(numberList.numbers));
+            return PartialView(model: Program.wordFreq());
+        }
+        public ActionResult CountAlice()
+        {
+            return PartialView(model: Program.countAlice());
         }
 
+        [ValidateInput(false)]
         public ActionResult GetCode(CodePost functionName)
         {
             string code;

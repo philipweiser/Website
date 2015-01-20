@@ -1,6 +1,12 @@
-﻿@model int
+﻿@model bool
 
 <div type=row id="answer-1-row">
-    <p>The largest number submitted is: @Model
+    <p>
+        @if (@Model)
+        {
+            <p>It is a Palindrome!</p>
+        }else{
+            <p>It is not a Palindrome!</p>
+        }
     </p>
 </div>

@@ -1,0 +1,376 @@
+/*
+ * Author: Carlos Alvarez
+ * URL: http://Alvarez.is
+ *
+ * Project Name: NYC Design
+ * Version: 1.0
+ * Date: 04-20-2014
+ * URL: 
+ */
+
+
+/* ==========================================================================
+   Base Styles, Bootstrap Modifications & Fonts Import
+   ========================================================================== */
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+::-moz-selection {
+    background: #f2c2c9;
+    color: #a4003a;
+    text-shadow: none;
+}
+
+::selection {
+    background: #16a085;
+    color: #a4003a;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+ hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+img {
+  vertical-align: middle;
+}
+.img-responsive {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.centered {
+	text-align: center
+}
+
+.mt {
+	margin-top: 80px;
+}
+
+.mb {
+	margin-bottom: 80px;
+}
+
+/* ==========================================================================
+   General styles
+   ========================================================================== */
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    height:100%;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+.resume_body{
+	margin-top: 53px;
+	background-image: url("../img/seagulls.jpg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: top;
+}
+
+h1, h2, h4, h5, h6 {
+	font-weight: 700;
+    color: #ffffff;
+}
+h3{
+	font-weight: 700;
+	color: #7d7d7d;
+}
+
+
+.navbar-brand {
+	font-weight: 700;
+}
+
+.navbar-default .navbar-brand {
+	color: #1abc9c;
+}
+
+.navbar-default {
+	background-color: black;
+	border-color: transparent;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #1abc9c;
+	background-color: transparent;
+	border-bottom: 2px solid #1abc9c
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #1abc9c;
+}
+/* timeline */
+.timeline {
+  background-image: url('../img/vertical-line.png?1378694750');
+  background-repeat: repeat-y;
+  background-position: 50% 0;
+  max-width: 960px;
+}
+.timeline .year {
+  background: #1abc9c;
+  font-size: 1em;
+  line-height: 4;
+  color: #ffffff;
+  width: 6em;
+  border-radius: 50%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+@media (min-width: 992px) {
+  .timeline .year {
+    margin-bottom: 30px;
+  }
+}
+.timeline .month {
+  display: block;
+  margin-bottom: 15px;
+  color: #7d7d7d;
+  font-size: 0.9em;
+}
+.timeline .month .icon {
+  margin-right: 5px;
+}
+.timeline .event {
+  width: 40%;
+  background: #ffffff;
+  border-color: #1abc9c;
+  text-align: center;
+  margin: 10px 0;
+  padding: 1.3em;
+  color: #3c3c3c;
+}
+/* ==========================================================================
+   Wrap Sections
+   ========================================================================== */
+
+#headerwrap {
+	background: url(../img/back.jpg) no-repeat center top;
+	margin-top: 0px;
+	padding-top: 250px;
+	text-align:center;
+	background-attachment: scroll;
+	background-position: center center;
+	min-height: 600px;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#headerwrap h1 {
+	color:#ffffff;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	letter-spacing: 4px;
+	font-size: 70px;
+	font-weight: bold;
+}
+
+#headerwrap h4 {
+	font-weight: 400;
+	color: #ffffff
+}
+
+#social {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: #f2f2f2;
+}
+
+#social i {
+	font-size: 40px;
+	color: #4a4a4a
+}
+
+#social i:hover {
+	color: #1abc9c
+}
+
+#footerwrap {
+    width:100%;
+	padding-top: 70px;
+	padding-bottom: 50px;
+	background-color: #2f2f2f;
+}
+
+#footerwrap p {
+	color: #f2f2f2;
+	margin-left: 10px;
+}
+
+#workwrap {	
+	background: url(../img/work.jpg) no-repeat center top;
+	margin-top: -70px;
+	padding-top: 250px;
+	text-align:center;
+	background-attachment: scroll;
+	background-position: center center;
+	min-height: 450px;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#workwrap h1 {
+	color:#ffffff;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	letter-spacing: 4px;
+	font-size: 80px;
+	font-weight: bold;
+}
+
+#workwrap h4 {
+	font-weight: 400;
+	color: #ffffff
+}
+
+#aboutwrap {	
+	background: url(../img/about.jpg) no-repeat center top;
+	margin-top: 0px;
+	padding-top: 150px;
+	text-align:center;
+	background-attachment: scroll;
+	background-position: center top;
+	min-height: 500px;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#resumewrap h2{
+	font-weight: 400;
+	color: #ffffff
+}
+#resumewrap {	
+	margin-top: 0px;
+	padding-top: 53px;
+	text-align:center;
+	background-attachment: fixed;
+	background-position: center center;
+    margin-left:auto;
+    margin-right:auto;
+	width: 100%;
+	background-image: url("../img/seagulls.jpg");
+	background-repeat: no-repeat;
+
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Gallery */
+.gallery {
+    
+}
+
+.gallery img:hover {
+	opacity: 0.4;
+}
+.gallery .C:hover{
+    opacity: 0.4;
+}
+.gallery .C{
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.gallery .c1 {
+    background-color:rgb(0,163,0);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c2 {
+    background-color: rgb(0,171,169);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c3 {
+    background-color: rgb(126,56,120);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c4 {
+    background-color: rgb(227,162,26);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c5 {
+    background-color: rgb(29,29,29);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c6 {
+    background-color: rgb(185,29,71);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c7 {
+    background-color: rgb(255,0,151);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c8 {
+    background-color: rgb(45,137,239);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .c9 {
+    background-color: rgb(238,17,17);
+    min-height:200px;
+    background-clip:content-box;
+}
+.gallery .codeC{
+    line-height:136px;
+}

@@ -168,12 +168,9 @@
     <Compile Include="Controllers\CodePost.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ExercisesController.cs" />
-    <Compile Include="Controllers\FactorialPost.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MaxPost.cs" />
     <Compile Include="Controllers\PostsController.cs" />
-    <Compile Include="Controllers\SumMultPost.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -328,8 +325,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\blog\" />
-    <Folder Include="Views\FactorialPost\" />
-    <Folder Include="Views\SumMultPost\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

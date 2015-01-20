@@ -34,7 +34,7 @@ namespace ConsoleSln
             Console.ReadKey();
         }
         [WebMethod]
-        public static int? maxOfThree(List<int> numbers)
+        public static int? maxOfThree(int[] numbers)
         {
             int? max = null;
             foreach (var number in numbers)
@@ -47,7 +47,7 @@ namespace ConsoleSln
             return max.Value;
         }
         [WebMethod]
-        public static int[] sumMult(List<int> numbers)
+        public static int[] sumMult(int[] numbers)
         {
             int theSum = 0;
             foreach (int i in numbers)
@@ -71,7 +71,7 @@ namespace ConsoleSln
         [WebMethod]
         public static bool palindrome(string foo)
         {
-            for (int i = 0; i < foo.Length/2-1; i++)
+            for (int i = 0; i < foo.Length-1; i++)
             {
                 if (foo[i] != foo[foo.Length - i - 1])
                 {
@@ -81,26 +81,26 @@ namespace ConsoleSln
                 return true;
         }
         [WebMethod]
-        public static string fizzBuzz()
+        public static string[] fizzBuzz()
         {
-            string answer = "";
+            string[] answer = new string[100];
             for (int i = 1; i <= 100; i++)
             {
                 if (i % 5 == 0 && i % 3 == 0)
                 {
-                    answer += "FizzBuzz\n";
+                    answer[i-1] = "FizzBuzz";
                 }
                 else if (i % 5 == 0)
                 {
-                    answer += "Buzz\n";
+                    answer[i-1] = "Buzz";
                 }
                 else if (i % 3 == 0)
                 {
-                    answer += "Fizz\n";
+                    answer[i-1] = "Fizz";
                 }
                 else
                 {
-                    answer += i + "\n";
+                    answer[i-1] = i+"";
                 }
             }
             return answer;
@@ -111,7 +111,7 @@ namespace ConsoleSln
             string [] tokens;
             string answer = "";
             string line = System.IO.File.ReadAllText("C:/Users/Phil/Documents/GitHub/C-Sharp-Problems/ConsoleSln/ConsoleSln/res/AliceChap1.txt");
-            tokens = line.Split(new char[] {' ', ',', '-', '"', '?', '.'});
+            tokens = line.Split(new char[] {' ', ',', '-', '"', '?', '.', '\n'});
             foreach (string foo in tokens)
             {
                 string temp = foo.Trim('\'');
@@ -128,7 +128,7 @@ namespace ConsoleSln
             string[] tokens;
             List<string> answer = new List<string>();
             string line = System.IO.File.ReadAllText("C:/Users/Phil/Documents/GitHub/C-Sharp-Problems/ConsoleSln/ConsoleSln/res/AliceChap1.txt");
-            tokens = line.Split(new char[] { ' ', ',', '-', '"', '?', '.' ,'!', ')', '(', '\'', ':', ';'});
+            tokens = line.Split(new char[] { ' ', ',', '-', '"', '?', '.' ,'!', ')', '(', '\'', ':', ';', '\n'});
             foreach (string foo in tokens)
             {
                 string temp = foo.Trim('\'');

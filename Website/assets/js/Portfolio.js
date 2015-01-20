@@ -29,56 +29,6 @@ function callIsHappy() {
 function callArmstrong() {
     $.prompt(armDemo);
 }
-function CS1() {
-    $.prompt(CS1Demo);
-}
-// CSDemo of max of three
-var CS1Demo = {
-    state0: {
-        title: 'Max Method',
-        html: '<h3>Objective: </h3><p>Create a function that accepts three numbers as arguments and returns the largest one.</p>',
-        buttons: { Next: 1 },
-        //focus: "input[name='fname']",
-        submit: function (e, v, m, f) {
-
-            e.preventDefault();
-            $.prompt.goToState('state1');
-        }
-    },
-    state1: {
-        title: 'Max Method input',
-        html: '<div type="row" id="answer-1-row">'+
-                '</div>',
-        buttons: { Back: -1, Submit: 0, Code: 2, Close: 1 },
-        //focus: ":input:first",
-        submit: function (e, v, m, f) {
-
-            if (v == 1) $.prompt.close();
-            if (v == 0) $('#answer-1-row').replaceWith('@Html.Partial("CSProblemsView")');
-            if (v == -1) $.prompt.goToState('state0');
-            if (v == 2) {
-                if ($('#madeCode').is(':visible')) {
-                    $('#madeCode').hide();
-                } else {
-                    $('#madeCode').show();
-                }
-                $('#unmadeCode').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
-'function maxOfThree() {\n' +
-'    var temp = 0;\n' +
-'    var strArr = arguments[0].split(" ");\n' +
-'    for (var i = 0; i < strArr.length; i++) {\n' +
-'        if (Number(strArr[i]) > temp) {\n' +
-'            temp = strArr[i];\n' +
-'        }\n' +
-'    }\n' +
-'    return temp;\n' +
-'}\n</pre></div>');
-                SyntaxHighlighter.highlight($('#toColor'));
-            }
-            e.preventDefault();
-        }
-    }
-};
 //demo of max of three function
 var maxDemo = {
     state0: {
@@ -774,7 +724,7 @@ var showJavaScript = true;
 var showcs = true;
 function javaProbs() {
     if(showJavaScript){
-    $('.JSExercises').slideDown(1000);
+        $('.JSExercises').slideDown(1000);
     } else {
         $('.JSExercises').slideUp(1000);
     }
