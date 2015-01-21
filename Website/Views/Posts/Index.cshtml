@@ -2,102 +2,125 @@
 
 @{
     ViewBag.Title = "Index";
-    @Html.Partial("_LoginPartial")
 }
-
-<div class="container">
-    <div class="row">
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8">
-            <h2>Index</h2>
-            @if (User.IsInRole("Admin"))
-            {
-                <p>
-                    @Html.ActionLink("New Post", "Create")
-                </p>
-            }
-            @*<tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Created)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Updated)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Title)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Body)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MediaURL)
-                    </th>
-                    <th></th>
-                </tr>*@
-            <div class="col">
-                @foreach (var item in Model)
+<div id="blogwrap">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-sm-9 column">
+                @if (User.IsInRole("Admin"))
                 {
                     <div class="row">
-                        <h1>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </h1>
-                        <h3>
-                            Posted:
-                            @Html.DisplayFor(modelItem => item.Created)
-                        </h3>
-                    </div>
-                    <div class="row">
-                            @Html.DisplayFor(modelItem => item.Body)
-                            @if (item.MediaURL != null)
-                            {
-                                <img src="@Url.Content(item.MediaURL)" class="img-responsive" />
-                            }
-                    </div>
-                    if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
-                    {
-                        <div class="row">
-                            <div class="col-sm-3">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                            </div>
-                            <div class="col-sm-3">
-                                @Html.ActionLink("Details", "Details", new { id = item.Id })
-                            </div>
-                            <div class="col-sm-3">
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </div>
-                            <div class="col-sm-3">
-                                @Html.ActionLink("Edit Comments", "Index", "Comments", new { id = item.Id }, null)
-                            </div>
+                        <div class="col-xs-3">
+                            <h3 id="blogpost">
+                                @Html.ActionLink("New Post", "Create")
+                            </h3>
                         </div>
-
-                    }
-                    if (item.Comments != null)
-                    {
-                        <div class="row">
-                            @foreach (var subComment in item.Comments)
-                            {
-                                <p>By: @subComment.Author</p>
-                                <p>@subComment.Created</p>
-                                <p>@subComment.Body</p>
-                            }
-                        </div>
-                    }
-                    @*<tr>
-                            <td>
-
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Updated)
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MediaURL)
-                            </td>
-                        </tr>*@
+                    </div>
                 }
+                <div id="blogpost">
+                    @foreach (var item in Model.OrderByDescending(p => p.Created))
+                    {
+                        <div id="row">
+                            <h2>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </h2>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <h4>
+                                    Posted:
+                                    @item.Created.ToString("MMMM d, yyyy")
+                                    at
+                                    @item.Created.ToString("hh:mm tt")
+                                </h4>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Body)
+                                    @if (item.MediaURL != null)
+                                    {
+                                        <img src="@Url.Content(item.MediaURL)" class="img-responsive" />
+                                    }
+                                </p>
+                            </div>
+                            <div id="showCommentsButton">
+                                <a onclick="showComments()" href="#">Show comments...</a>
+                            </div>
+                            <div id="showComments">
+                                @if (item.Comments.Count != 0)
+                                {
+                                    <div class="row">
+                                        <h2>All Comments:</h2>
+
+                                        <textarea class="input-lg" id="commentBox" placeholder="Leave a comment?" onclick="commentBoxClicked()"></textarea>
+                                        <form><input type="button" value="Submit Comment" class="btn" id="commentBtn" onclick="submitComment(@item.Id)" /></form>
+                                        @foreach (var subComment in item.Comments.OrderByDescending(p => p.Created))
+                                        {
+                                            <p>@subComment.Author.DisplayName</p>
+                                            <p>
+                                                @subComment.Created.ToString("MMMM d, yyyy")
+                                                at
+                                                @subComment.Created.ToString("hh:mm tt")
+                                            </p>
+                                            <p>@subComment.Body</p>
+                                        }
+                                    </div>
+                                }
+                                </div>
+                                <div class="row">
+                                    @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                {
+                                        @*<div class="btn-group">*@
+                                        <div class="col-sm-3">
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                                        </div>
+                                        <div class="col-sm-3">
+                                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+                                        </div>
+                                        <div class="col-sm-3">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                        </div>
+                                        <div class="col-sm-3">
+                                            @Html.ActionLink("Edit Comments", "Index", "Comments", new { id = item.Id }, null)
+                                        </div>
+                                        @*</div>*@
+                                }
+                                </div>
+                            </div>
+                            <br />
+                            }
+                            
+                            @*<button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> Left</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> Center</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> Right</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> Justify</button>*@
+
+                            <div class="row">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="#">Prev</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">4</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">5</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-sm-3 column" id="blogpost">
+                            @Html.Partial("_LoginPartial")
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
+            <script src="~/assets/js/Posts_Index.js"></script>

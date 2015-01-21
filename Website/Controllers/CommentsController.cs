@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Website.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Website.Controllers
 {
@@ -15,22 +16,21 @@ namespace Website.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Comments/Index
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult Index(int? id)
         {
+            if (id == null) { 
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);}
+            ViewBag.PostId = id;
             return View(db.Posts.Find(id).Comments.ToList());
+            
             //string text = "this is the text";
             //var matches = db.Posts.Where(p => p.Body.Contains(text)).ToList();
         }
-        // GET: Comments
-        public ActionResult Index()
-        {
-            var comments = db.Comments.Include(c => c.Author).Include(c => c.ParentPost);
-            return View(comments.ToList());
-        }
+
 
         // GET: Comments/Details/5
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -47,35 +47,38 @@ namespace Website.Controllers
 
         // GET: Comments/Create
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             //ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FirstName");
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title");
-            return View();
+            return View(new Comment{ PostId = id });
         }
 
         // POST: Comments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
+        public string Create(int PostId, string CommentBody)
         {
             if (ModelState.IsValid)
             {
+                Comment comment = new Comment();
+
+                comment.AuthorId = User.Identity.GetUserId();
+                comment.Created = DateTimeOffset.Now;
+                comment.Body = CommentBody;
+                comment.PostId = PostId;
+
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return "Your post was successfully saved.";
             }
-
-            //ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FirstName", comment.AuthorId);
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comment.PostId);
-            return View(comment);
+            return "There was a problem submitting your comment.  Please try again.";
         }
 
         // GET: Comments/Edit/5
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,12 +100,19 @@ namespace Website.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Moderator")]
-        public ActionResult Edit([Bind(Include = "Id,PostId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
+        [Authorize(Roles = "Admin,Moderator")]
+        public ActionResult Edit([Bind(Include = "Id,PostId,Body,UpdateReason")] Comment comment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(comment).State = EntityState.Modified;
+                var RealComment = db.Comments.Find(comment.Id);
+
+                RealComment.Body = comment.Body;
+                RealComment.Updated = DateTimeOffset.Now;
+                RealComment.UpdateReason += comment.UpdateReason + "\n\n";
+
+
+                db.Comments.Add(RealComment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -112,7 +122,7 @@ namespace Website.Controllers
         }
 
         // GET: Comments/Delete/5
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -130,7 +140,7 @@ namespace Website.Controllers
         // POST: Comments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Comment comment = db.Comments.Find(id);

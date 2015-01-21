@@ -20,7 +20,23 @@ namespace Website.Controllers
         {
             return View(db.Posts.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(string searchStr)
+        {
+            //query finds all posts where the search string is found in the post title or body,
+            // or in any of the comments, including info related to the comment author, the comment
+            // body, or the reason the comment was updated
+            var result = db.Posts.Where(p => p.Body.Contains(searchStr))
+                .Union(db.Posts.Where(p => p.Title.Contains(searchStr)))
+                .Union(db.Posts.Where(p => p.Comments.Any(c => c.Body.Contains(searchStr))))
+                .Union(db.Posts.Where(p => p.Comments.Any(c => c.Author.DisplayName.Contains(searchStr))))
+                .Union(db.Posts.Where(p => p.Comments.Any(c => c.Author.FirstName.Contains(searchStr))))
+                .Union(db.Posts.Where(p => p.Comments.Any(c => c.Author.LastName.Contains(searchStr))))
+                .Union(db.Posts.Where(p => p.Comments.Any(c => c.Author.Email.Contains(searchStr))))
+                .Union(db.Posts.Where(p => p.Comments.Any(c => c.UpdateReason.Contains(searchStr))));
 
+            return View(result.ToList());
+        }
         // GET: Posts/Details/5
         public ActionResult Details(int? id)
         {

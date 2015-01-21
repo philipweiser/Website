@@ -203,6 +203,7 @@
     <Content Include="assets\img\linkedin_logo.png" />
     <Content Include="assets\img\noa_logo.png" />
     <Content Include="assets\img\nomac_logo.png" />
+    <Content Include="assets\img\pinstripe_bg_full - Copy.jpg" />
     <Content Include="assets\img\portfolio\folio01.jpg" />
     <Content Include="assets\img\portfolio\folio01.png" />
     <Content Include="assets\img\portfolio\folio02.png" />
@@ -221,6 +222,7 @@
     <Content Include="assets\js\jquery-impromptu.min.js" />
     <Content Include="assets\js\PortfolioCS.js" />
     <Content Include="assets\js\Portfolio.js" />
+    <Content Include="assets\js\Posts_Index.js" />
     <Content Include="assets\js\Resume.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
