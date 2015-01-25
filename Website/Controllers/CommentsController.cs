@@ -19,11 +19,13 @@ namespace Website.Controllers
         [Authorize(Roles = "Admin,Moderator")]
         public ActionResult Index(int? id)
         {
-            if (id == null) { 
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);}
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             ViewBag.PostId = id;
             return View(db.Posts.Find(id).Comments.ToList());
-            
+
             //string text = "this is the text";
             //var matches = db.Posts.Where(p => p.Body.Contains(text)).ToList();
         }
@@ -50,7 +52,7 @@ namespace Website.Controllers
         public ActionResult Create(int id)
         {
             //ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FirstName");
-            return View(new Comment{ PostId = id });
+            return View(new Comment { PostId = id });
         }
 
         // POST: Comments/Create
@@ -64,17 +66,17 @@ namespace Website.Controllers
             if (ModelState.IsValid)
             {
                 Comment comment = new Comment();
-
                 comment.AuthorId = User.Identity.GetUserId();
                 comment.Created = DateTimeOffset.Now;
                 comment.Body = CommentBody;
-                comment.PostId = PostId;
 
-                db.Comments.Add(comment);
+                db.Posts.Find(PostId).Comments.Add(comment);
+                
                 db.SaveChanges();
-                return "Your post was successfully saved.";
+                return "Your comment was successfully saved.";
             }
             return "There was a problem submitting your comment.  Please try again.";
+
         }
 
         // GET: Comments/Edit/5
@@ -116,7 +118,7 @@ namespace Website.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-           // ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FirstName", comment.AuthorId);
+            // ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FirstName", comment.AuthorId);
             ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comment.PostId);
             return View(comment);
         }

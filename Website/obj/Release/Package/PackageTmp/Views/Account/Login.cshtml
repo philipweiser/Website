@@ -2,13 +2,19 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
+    string retUrl = "";
+    if (ViewContext.HttpContext.Request.UrlReferrer != null)
+    {
+        retUrl =
+          ViewContext.HttpContext.Request.UrlReferrer.PathAndQuery;
+    } 
 }
 
 <h2>@ViewBag.Title.</h2>
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = retUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 <h4>Use a local account to log in.</h4>

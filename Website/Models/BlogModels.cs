@@ -26,12 +26,13 @@ namespace Website.Models
     {
         [Key]
         public int Id { get; set; }
+
         [ForeignKey("ParentPost")]
         public int PostId { get; set; }
-        //[ForeignKey("Parent Comment")]
-        //public Nullable<int> CommentId { get; set; }
+
         [ForeignKey("Author")]
         public string AuthorId { get; set; }
+
         public string Body { get; set; }
         public DateTimeOffset Created { get; set; }
         public Nullable<DateTimeOffset> Updated { get; set; }
@@ -39,6 +40,5 @@ namespace Website.Models
 
         public virtual Post ParentPost { get; set; }
         public virtual ApplicationUser Author { get; set; }
-        //public virtual Comment ParentComment{get; set;}
     }
 }
