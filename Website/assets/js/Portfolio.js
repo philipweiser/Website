@@ -396,31 +396,31 @@ var dispDemo = {
                     $('#madeCode').show();
                 }
                 $('#code').replaceWith('<div id="madeCode"><pre class="brush: js" id="toColor">' +
-'function isPerfect(num) {' +
-'    if (num <= 5) {'+
-'        return false;'+
+'function isPerfect(num) {\n' +
+'    if (num <= 5) {\n' +
+'        return false;\n' +
 '    }'+
-'    var div_sum = 0;'+
-'    for (i = 0; i < num; i++) {'+
-'        if (num % i === 0) {'+
-'            div_sum += i;'+
-'        }'+
+'    var div_sum = 0;\n' +
+'    for (i = 0; i < num; i++) {\n' +
+'        if (num % i === 0) {\n' +
+'            div_sum += i;\n' +
+'        }\n' +
+'    }\n' +
+'    if (div_sum === num) {\n' +
+'        return true;\n' +
+'    } else {\n' +
+'        return false;\n' +
 '    }'+
-'    if (div_sum === num) {'+
-'        return true;'+
-'    } else {'+
-'        return false;'+
-'    }'+
-'}'+
-'function disp() {'+
-'    var answer = "";'+
-'    for (var i = 6; i <= 10000; i++) {'+
-'        if (isPerfect(i)) {'+
-'            answer += i + "\n";'+
-'        }'+
-'    }'+
-'    return answer;'+
-'}\n</pre></div>');
+'}\n' +
+'function disp() {\n' +
+'    var answer = "";\n' +
+'    for (var i = 6; i <= 10000; i++) {\n' +
+'        if (isPerfect(i)) {\n' +
+'            answer += i + "\\n";\n' +
+'        }\n' +
+'    }\n' +
+'    return answer;\n' +
+'}\n</pre></div>\n');
                 SyntaxHighlighter.highlight($('#toColor'));
 
             }
@@ -494,8 +494,8 @@ var happyDemo = {
 '        currentNum = startNum + 1;\n'+
 '    }\n'+
 '    var strAnswer = "";\n'+
-'    for(var i=0; i<answer.length; i++) {\n'+
-'        strAnswer += answer[i] + "\n";\n'+
+'    for(var i=0; i\<answer.length\; i++) { \n'+
+'        strAnswer += answer[i] \+ "\\n";\n'+
 '    }\n'+
 '    return strAnswer;\n'+
 '}\n</pre></div>');
@@ -551,8 +551,7 @@ var armDemo = {
 '            temp = Math.floor(temp / 10);\n'+
 '        }\n'+
 '        if (sum == i) {\n'+
-'            answer += i + "\n";\n'+
-'        \n'+
+'            answer += i + "\\n";\n'+
 '    }\n'+
 '    return answer;\n'+
 '}\n</pre></div>');

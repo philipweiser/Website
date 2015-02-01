@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
+using System.IO;
+using System.Reflection;
 namespace ConsoleSln
 {
     public class Program
@@ -110,7 +112,7 @@ namespace ConsoleSln
         {
             string [] tokens;
             string answer = "";
-            string line = System.IO.File.ReadAllText("C:/Users/Phil/Documents/GitHub/C-Sharp-Problems/ConsoleSln/ConsoleSln/res/AliceChap1.txt");
+            string line = new System.Net.WebClient().DownloadString("http://pweiser.azurewebsites.net/assets/alicechap1.txt");
             tokens = line.Split(new char[] {' ', ',', '-', '"', '?', '.', '\n'});
             foreach (string foo in tokens)
             {
@@ -127,7 +129,7 @@ namespace ConsoleSln
         {
             string[] tokens;
             List<string> answer = new List<string>();
-            string line = System.IO.File.ReadAllText("C:/Users/Phil/Documents/GitHub/C-Sharp-Problems/ConsoleSln/ConsoleSln/res/AliceChap1.txt");
+            string line = new System.Net.WebClient().DownloadString("http://pweiser.azurewebsites.net/assets/alicechap1.txt");
             tokens = line.Split(new char[] { ' ', ',', '-', '"', '?', '.' ,'!', ')', '(', '\'', ':', ';', '\n'});
             foreach (string foo in tokens)
             {
@@ -142,10 +144,9 @@ namespace ConsoleSln
         }
         [WebMethod]
         public static List<KeyValuePair<string, int>> wordFreq() {
-            //open file, tokenize, if token is unique, create a new key-value pair, set value to 1, else incremement value
             string[] tokens;
             Dictionary<string, int> answer = new Dictionary<string,int>();
-            string line = System.IO.File.ReadAllText("C:/Users/Phil/Documents/GitHub/C-Sharp-Problems/ConsoleSln/ConsoleSln/res/AliceChap1.txt");
+            string line = new System.Net.WebClient().DownloadString("http://pweiser.azurewebsites.net/assets/alicechap1.txt");
             string extra ="";
             extra = line.Replace(" \'", " ");
             extra = extra.Replace("\' ", " ");
@@ -180,7 +181,7 @@ namespace ConsoleSln
         {
             int answer = 0;
             string[] tokens;
-            string line = System.IO.File.ReadAllText("C:/Users/Phil/Documents/GitHub/C-Sharp-Problems/ConsoleSln/ConsoleSln/res/AliceChap1.txt");
+            string line = new System.Net.WebClient().DownloadString("http://pweiser.azurewebsites.net/assets/alicechap1.txt");
             tokens = line.Split(new char[] { ' ', ',', '-', '"', '?', '.', '!', ')', '(', ':', ';', '\n' });
             foreach (string foo in tokens)
             {

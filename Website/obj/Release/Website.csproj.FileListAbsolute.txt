@@ -19,6 +19,8 @@ C:\Users\Phil\Documents\GitHub\Website\Website\bin\Microsoft.Owin.Security.Twitt
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\Newtonsoft.Json.dll
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\Owin.dll
+C:\Users\Phil\Documents\GitHub\Website\Website\bin\SendGrid.SmtpApi.dll
+C:\Users\Phil\Documents\GitHub\Website\Website\bin\SendGridMail.dll
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\System.Web.Helpers.dll
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\System.Web.Mvc.dll
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\System.Web.Optimization.dll
@@ -52,6 +54,4 @@ C:\Users\Phil\Documents\GitHub\Website\Website\bin\Microsoft.Owin.Security.Twitt
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.dll
 C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.pdb
-C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.csprojResolveAssemblyReference.cache
-C:\Users\Phil\Documents\GitHub\Website\Website\bin\SendGrid.SmtpApi.dll
-C:\Users\Phil\Documents\GitHub\Website\Website\bin\SendGridMail.dll
+C:\Users\Phil\Documents\GitHub\Website\Website\bin\assets\AliceChap1.txt
