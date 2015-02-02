@@ -55,3 +55,4 @@ C:\Users\Phil\Documents\GitHub\Website\Website\bin\Microsoft.Owin.Security.Micro
 C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.dll
 C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.pdb
 C:\Users\Phil\Documents\GitHub\Website\Website\bin\assets\AliceChap1.txt
+C:\Users\Phil\Documents\GitHub\Website\Website\obj\Release\Website.csprojResolveAssemblyReference.cache
