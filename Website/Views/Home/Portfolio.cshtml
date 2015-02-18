@@ -1,13 +1,36 @@
 ﻿<div id="workwrap">
+    <a name="Portfolio"></a>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-3">
-                <h3 onclick="javaProbs()" style="cursor:pointer">JavaScript Problemset</h3>
-                <h3 onclick="csProbs()" style="cursor:pointer">C# Problemset</h3>
-                <h4>BY PHILIP WEISER</h4>
+        <div class="row centered mt mb">
+            <h1>My Portfolio</h1>
+        <br /><br />
+        <div class="col-xs-1"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-4">
+                    <a href="https://weiserp-BugTracker.azurewebsites.net">
+                        <span title="BugTracker Application">
+                            <img src="~/assets/img/portfolio/BugTrackerLogo.png" style="cursor:pointer">
+                        </span>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#problems">
+                        <span title="C# Exercises">
+                            <img src="~/assets/img/portfolio/folio02.png" onclick="csProbs()" style="cursor:pointer">
+                        </span>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#problems">
+                        <span title="JavaScript Exercises">
+                            <img src="~/assets/img/portfolio/folio01.jpg" onclick="javaProbs()" style="cursor:pointer">
+                        </span>
+                    </a>
+                </div>
+
             </div>
         </div><! --/row -->
-    </div> <!-- /container -->
+    </div><! --/container -->
 </div><! --/workwrap -->
 <section id="works"></section>
 
@@ -20,5 +43,6 @@
 
 <script src="~/assets/js/jquery-impromptu.min.js"></script>
 <link href="~/assets/css/jquery-impromptu.min.css" rel="stylesheet" />
+<a name="problems"></a>
 @Html.Partial("JSProblemsView")
 @Html.Partial("CSProblemsView")

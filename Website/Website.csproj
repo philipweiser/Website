@@ -180,7 +180,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scripts\Program.cs" />
+    <Compile Include="Scripts\Program.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,18 +201,20 @@
     <Content Include="assets\img\about_large.jpg" />
     <Content Include="assets\img\back.jpg" />
     <Content Include="assets\img\back2.jpg" />
+    <Content Include="assets\img\portfolio\BugTrackerLogo.png" />
     <Content Include="assets\img\cflogo.jpg" />
     <Content Include="assets\img\duke_logo.png" />
     <Content Include="assets\img\eton_logo.jpg" />
     <Content Include="assets\img\horizon_logo.png" />
+    <Content Include="assets\img\hugh_jeep.jpg" />
     <Content Include="assets\img\linkedin_logo.png" />
     <Content Include="assets\img\noa_logo.png" />
     <Content Include="assets\img\nomac_logo.png" />
+    <Content Include="assets\img\Philip-Weiser-web.jpg" />
     <Content Include="assets\img\pinstripe_bg_full - Copy.jpg" />
     <Content Include="assets\img\portfolio\folio01.jpg" />
     <Content Include="assets\img\portfolio\folio01.png" />
     <Content Include="assets\img\portfolio\folio02.png" />
-    <Content Include="assets\img\portfolio\folio03.png" />
     <Content Include="assets\img\portfolio\folio04.png" />
     <Content Include="assets\img\portfolio\folio05.png" />
     <Content Include="assets\img\portfolio\folio06.png" />

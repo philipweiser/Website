@@ -14,7 +14,10 @@
    ========================================================================== */
 
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-
+.phil{
+    width:100%;
+    height:auto;
+}
 
 ::-moz-selection {
     background: #f2c2c9;
@@ -42,6 +45,7 @@
 }
 img {
   vertical-align: middle;
+  width:100%;
 }
 .img-responsive {
   display: block;
@@ -278,16 +282,8 @@ h3{
 	color: #ffffff
 }
 
-#aboutwrap {	
-	background: url(../img/about.jpg) no-repeat center center;
-	margin-top: 0px;
-	padding-top: 150px;
-	text-align:center;
-	background-attachment: fixed;
-	background-position: center top;
-	min-height: 600px;
-	width: 100%;
-	
+#aboutwrap {
+
 }
 #resumewrap h2{
 	font-weight: 400;
