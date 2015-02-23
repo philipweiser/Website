@@ -1,0 +1,48 @@
+﻿<div id="workwrap">
+    <a name="Portfolio"></a>
+    <div class="container">
+        <div class="row centered mt mb">
+            <h1>My Portfolio</h1>
+        <br /><br />
+        <div class="col-xs-1"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-4">
+                    <a href="https://weiserp-BugTracker.azurewebsites.net">
+                        <span title="BugTracker Application">
+                            <img src="~/assets/img/portfolio/BugTrackerLogo.png" style="cursor:pointer">
+                        </span>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#problems">
+                        <span title="C# Exercises">
+                            <img src="~/assets/img/portfolio/folio02.png" onclick="csProbs()" style="cursor:pointer">
+                        </span>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#problems">
+                        <span title="JavaScript Exercises">
+                            <img src="~/assets/img/portfolio/folio01.jpg" onclick="javaProbs()" style="cursor:pointer">
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+        </div><! --/row -->
+    </div><! --/container -->
+</div><! --/workwrap -->
+<section id="works"></section>
+
+
+<script src="~/Scripts/shCore.js"></script>
+<link href="~/assets/css/shThemeDefault.css" rel="stylesheet" />
+<link href="~/assets/css/shCore.css" rel="stylesheet" />
+<script src="~/Scripts/shBrushJScript.js"></script>
+<script src="~/Scripts/shBrushCSharp.js"></script>
+
+<script src="~/assets/js/jquery-impromptu.min.js"></script>
+<link href="~/assets/css/jquery-impromptu.min.css" rel="stylesheet" />
+<a name="problems"></a>
+@Html.Partial("JSProblemsView")
+@Html.Partial("CSProblemsView")
