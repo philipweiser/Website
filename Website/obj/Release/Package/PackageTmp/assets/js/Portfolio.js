@@ -721,6 +721,7 @@ function armstrong() {
 }
 var showJavaScript = true;
 var showcs = true;
+var showang = true;
 function javaProbs() {
     if(showJavaScript){
         $('.JSExercises').slideDown(1000);
@@ -739,3 +740,12 @@ function csProbs() {
     showcs = !showcs;
 }
 $('.CSExercises').hide();
+function csAngularProbs() {
+    if (showang) {
+        $('.CSAngularExercises').slideDown(1000);
+    } else {
+        $('.CSAngularExercises').slideUp(1000);
+    }
+    showang = !showang;
+}
+$('.CSAngularExercises').hide();

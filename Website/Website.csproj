@@ -496,6 +496,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\blog\" />
+    <Folder Include="Content\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

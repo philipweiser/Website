@@ -65,13 +65,32 @@ namespace Website.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Created,Title,Body,MediaURL")] Post post, HttpPostedFileBase fileUpload)
         {
+            var file = Request.Files;
+
             if (ModelState.IsValid)
             {
+                //restricting to valid image uploads, only
                 if (fileUpload != null && fileUpload.ContentLength > 0)
                 {
+                    if (!fileUpload.ContentType.Contains("image"))
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.UnsupportedMediaType);
+                    }
                     var fileName = Path.GetFileName(fileUpload.FileName);
-                    fileUpload.SaveAs(Path.Combine(Server.MapPath("~/img/blog/"), fileName));
-                    post.MediaURL = "~/assets/img/blog/" + fileName;
+                    if (System.IO.File.Exists(fileName))
+                    {
+                        int count = 1;
+                        while (System.IO.File.Exists(count++ + fileName))
+                        {
+                        }
+                        if (count > 1)
+                        {
+                            fileName = count + fileName;
+                        }
+                    }
+                    var thePath = Path.Combine(Server.MapPath("~/Content/uploads/"), fileName);
+                    post.MediaURL = "/Content/uploads/" + fileName;
+                    fileUpload.SaveAs(thePath);
                 }
                 post.Created = DateTimeOffset.Now;
                 db.Posts.Add(post);
