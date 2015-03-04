@@ -43,3 +43,9 @@ Temporary Items
 .apdisk
 Website/Web.config
 *.suo
+*.suo
+Website/bin/Website.dll
+*.pdb
+*.pdb
+Website/obj/Release/Website.dll
+*.cache

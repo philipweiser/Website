@@ -30,19 +30,24 @@
                         </div>
                         <div class="col-xs-12">
                             <div class="row">
-                                <h4>
-                                    Posted:
-                                    @item.Created.ToString("MMMM d, yyyy")
-                                    at
-                                    @item.Created.ToString("hh:mm tt")
-                                </h4>
-                                <p>
-                                    @Html.DisplayFor(modelItem => item.Body)
+                                <div class="col-sm-8">
+                                    <h4>
+                                        Posted:
+                                        @item.Created.ToString("MMMM d, yyyy")
+                                        at
+                                        @item.Created.ToString("hh:mm tt")
+                                    </h4>
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.Body)
+
+                                    </p>
+                                </div>
+                                <div class="col-sm-4" style="align-content:center">
                                     @if (item.MediaURL != null)
                                     {
-                                        <img src="@Url.Content(item.MediaURL)"/>
+                                        <img src="@Url.Content(item.MediaURL)" />
                                     }
-                                </p>
+                                </div>
                             </div>
                             @{
                                     string ctLabel = "commentsText" + @item.Id;
@@ -122,28 +127,28 @@
 
                     <div class="row">
                         @*<ul class="pagination">
-                            <li>
-                                <a href="#">Prev</a>
-                            </li>
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">5</a>
-                            </li>
-                            <li>
-                                <a href="#">Next</a>
-                            </li>
-                        </ul>*@
+                                <li>
+                                    <a href="#">Prev</a>
+                                </li>
+                                <li>
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li>
+                                    <a href="#">4</a>
+                                </li>
+                                <li>
+                                    <a href="#">5</a>
+                                </li>
+                                <li>
+                                    <a href="#">Next</a>
+                                </li>
+                            </ul>*@
                     </div>
                 </div>
             </div>
