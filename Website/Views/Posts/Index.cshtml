@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-xs-12">
                             <div class="row">
-                                <div class="col-sm-8">
+                                <div class="col-sm-9">
                                     <h4>
                                         Posted:
                                         @item.Created.ToString("MMMM d, yyyy")
@@ -42,10 +42,10 @@
 
                                     </p>
                                 </div>
-                                <div class="col-sm-4" style="align-content:center">
+                                <div class="col-sm-3" style="align-content:center">
                                     @if (item.MediaURL != null)
                                     {
-                                        <img src="@Url.Content(item.MediaURL)" />
+                                        <img src="@Url.Content(item.MediaURL)" style="width:100%" />
                                     }
                                 </div>
                             </div>
