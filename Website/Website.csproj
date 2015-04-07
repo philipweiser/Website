@@ -201,6 +201,7 @@
     <Content Include="assets\img\about_large.jpg" />
     <Content Include="assets\img\back.jpg" />
     <Content Include="assets\img\back2.jpg" />
+    <Content Include="assets\img\carlogo-white.png" />
     <Content Include="assets\img\portfolio\BugTrackerLogo.png" />
     <Content Include="assets\img\cflogo.jpg" />
     <Content Include="assets\img\duke_logo.png" />
